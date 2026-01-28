@@ -1,0 +1,25 @@
+services:
+
+  postgres:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+
+    environment:
+      POSTGRES_PASSWORD: 1854
+      POSTGRES_USER: admin
+      POSTGRES_DB: Test
+    ports:
+      - 5433:5432
+
+  rabbit:
+    image: rabbitmq:management
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8090:8080

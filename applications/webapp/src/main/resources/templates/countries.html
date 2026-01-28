@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{fragments/template.html :: head('countries')}"/>
+
+<body>
+
+    <!-- Navbar -->
+    <nav th:replace="~{fragments/template.html :: navbar('/country/search/', 'Country')}"/>
+
+    <div class="container mt-3">
+        <h3>Countries By Market Cap</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Country</th>
+                    <th>Market Cap</th>
+                    <th>Earnings</th>
+                    <th>Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="country:${countries}">
+                    <td th:text="${country.getMarketCapRanking()}"></td>
+                    <td><a th:href="@{'/country/'+${country.getId()}}" th:text="${country.getCountry()}"></a></td>
+                    <td th:text="${formatter.format(country.getMarketCap())}"></td>
+                    <td th:text="${formatter.format(country.getEarning())}"></td>
+                    <td th:text="${formatter.format(country.getRevenue())}"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
