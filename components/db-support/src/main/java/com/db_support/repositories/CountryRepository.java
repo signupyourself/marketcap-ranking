@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CountryRepository {
 
-    private DBConnection dbConnection;
+    private final DBConnection dbConnection;
 
     public CountryRepository() {
         dbConnection = DBConnection.getDbConnection();

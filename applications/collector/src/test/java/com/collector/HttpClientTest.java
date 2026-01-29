@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class  HttpClientTest {
 
     @Test
-    public void testGetWithValidUrlReturnsResponseBody(){
+    public void testGetReturnsValidResponseBodyWhenValidURlIsTheInput(){
         HttpWebClient webClient = new HttpWebClient();
         String resp = webClient.get("https://www.google.com");
-        assert(resp.length() != 0);
+        assert(!resp.isEmpty());
     }
 
 }

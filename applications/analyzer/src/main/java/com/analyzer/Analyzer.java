@@ -8,28 +8,31 @@ import com.db_support.repositories.CompanyRepository;
 import com.db_support.repositories.CountryRepository;
 import com.rabbitmq.client.DeliverCallback;
 import com.rabbitmq_support.RabbitMQHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class Analyzer{
 
+    private static final Logger log = LoggerFactory.getLogger(Analyzer.class);
     private static RabbitMQHelper rabbitMQHelper;
 
     public static void main(String[] args) {
 
-
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-                String message = new String(delivery.getBody(), "UTF-8");
+                String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
                 if(message.equals("Done")){
                     startApp();
                 }
-           };
+        };
 
         try{
             rabbitMQHelper = new RabbitMQHelper("COLLECTOR_ANALYZER_QUEUE");
             rabbitMQHelper.listen(deliverCallback);
         } catch (Exception e) {
-            System.out.println(e);
+            log.error("Error: ", e);
             System.exit(-1);
         }
 
@@ -53,7 +56,7 @@ public class Analyzer{
         try {
             rabbitMQHelper.closeConnection();
         } catch (Exception e) {
-            System.out.println(e);
+            log.error("Error: ", e);
             System.exit(-1);
         }
 

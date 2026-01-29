@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DBConnection{
 
-    private Connection connection;
+    private final Connection connection;
 
     private volatile static DBConnection dbConnection = null;
 

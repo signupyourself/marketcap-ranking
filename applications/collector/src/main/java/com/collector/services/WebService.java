@@ -10,9 +10,9 @@ import java.util.List;
 
 public class WebService {
 
-    private HttpWebClient webClient;
-    private CompanyParser htmlParser;
-    private String baseUrl;
+    private final HttpWebClient webClient;
+    private final CompanyParser htmlParser;
+    private final String baseUrl;
 
     public WebService(HttpWebClient webClient, CompanyParser htmlParser, String baseUrl) {
         this.webClient = webClient;

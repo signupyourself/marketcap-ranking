@@ -1,4 +1,4 @@
-package com.collector.mock;
+package com.collector.mocks;
 
 import com.collector.httpclients.HttpWebClient;
 
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
-public class HttpWebClientMock extends HttpWebClient {
+public class MockHttpWebClient extends HttpWebClient {
 
     public String get(String url){
         System.out.println("Inside");

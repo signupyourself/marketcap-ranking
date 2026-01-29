@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CompanyRepository{
 
-    private DBConnection dbConnection;
+    private final DBConnection dbConnection;
 
     public CompanyRepository() {
         dbConnection = DBConnection.getDbConnection();

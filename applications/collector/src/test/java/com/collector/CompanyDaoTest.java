@@ -12,7 +12,7 @@ public class CompanyDaoTest {
     private static CompanyDao companyDao;
 
     @BeforeAll
-    public static void setCompanyDao(){
+    public static void setup(){
         companyDao = new CompanyDao();
         companyDao.setName("nvidia");
         companyDao.setCountry("usa");
@@ -25,15 +25,15 @@ public class CompanyDaoTest {
 
 
     @Test
-    public void testCompanyDaoToCompanyCreatesCompanyObjectWithCorrectValues(){
+    public void testCompanyDaoToCompanyReturnsCompanyObjectWithCorrectValues(){
         Company company = companyDao.toCompany();
-        assertEquals(company.getName(), "nvidia");
-        assertEquals(company.getCountry(), "usa");
-        assertEquals(company.getMarketCap(), 4.5) ;
-        assertEquals(company.getImageUrl(), "http:://www.nvidia.com") ;
-        assertEquals(company.getEarning(), 15);
-        assertEquals(company.getRevenue(), 19);
-        assertEquals(company.getMarketCapRanking(), 0);
+        assertEquals("nvidia", company.getName());
+        assertEquals("usa", company.getCountry());
+        assertEquals(4.5, company.getMarketCap()) ;
+        assertEquals("http:://www.nvidia.com", company.getImageUrl()) ;
+        assertEquals(15, company.getEarning());
+        assertEquals(19, company.getRevenue());
+        assertEquals(0, company.getMarketCapRanking());
     }
 
 

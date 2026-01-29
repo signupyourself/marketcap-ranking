@@ -5,15 +5,11 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven {
-        url=uri("https://download.red-gate.com/maven/release")
-    }
 }
 
 dependencies {
 
-    implementation(project(":components:utils"))
-    implementation("org.postgresql:postgresql:42.7.8")
+    implementation("io.dropwizard.metrics:metrics-core:4.2.38")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }

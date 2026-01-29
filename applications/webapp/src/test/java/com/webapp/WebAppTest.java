@@ -19,27 +19,27 @@ class WebAppTest {
     @Autowired
     private RestTestClient restTestClient;
 
-    @Test
-    void testHomePageReturnsNonNullBody() {
-        assertThat(restTestClient.get()
-                .uri("http://localhost:%d/companies".formatted(port))
-                .exchange()
-                .expectBody(String.class)).isNotNull();
-    };
+     @Test
+     void testHomePageReturnsNonNullBody() {
+         assertThat(restTestClient.get()
+                 .uri("http://localhost:%d/companies".formatted(port))
+                 .exchange()
+                 .expectBody(String.class)).isNotNull();
+     };
 
-    @Test
-    void testHealthCheckReturnsNonNullBody(){
-        assertThat(restTestClient.get()
-                .uri("http://localhost:%d/health".formatted(port))
-                .exchange()
-                .expectBody(String.class)).isNotNull();
-    }
+     @Test
+     void testHealthCheckReturnsNonNullBody(){
+         assertThat(restTestClient.get()
+                 .uri("http://localhost:%d/health".formatted(port))
+                 .exchange()
+                 .expectBody(String.class)).isNotNull();
+     }
 
-    @Test
-    public void testCompanySearchPageReturnsNonNullBody(){
-        assertThat(restTestClient.get()
-                .uri("http://localhost:%d/company/4".formatted(port))
-                .exchange()
-                .expectBody(String.class)).isNotNull();
-    }
+     @Test
+     public void testCompanySearchPageReturnsNonNullBody(){
+         assertThat(restTestClient.get()
+                 .uri("http://localhost:%d/company/4".formatted(port))
+                 .exchange()
+                 .expectBody(String.class)).isNotNull();
+     }
 }

@@ -6,11 +6,11 @@ plugins {
 }
 
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(23)
-    }
-}
+//java {
+//    toolchain {
+//        languageVersion = JavaLanguageVersion.of(23)
+//    }
+//}
 
 repositories {
     mavenCentral()
@@ -22,7 +22,9 @@ dependencies {
     //local dependencies
     implementation(project(":components:db-support"))
     implementation(project(":components:utils"))
+    implementation(project(":components:metrics"))
 
+    implementation("org.postgresql:postgresql:42.7.8")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat-runtime")

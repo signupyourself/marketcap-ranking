@@ -1,7 +1,7 @@
 package com.collector;
 
 import com.collector.httpclients.HttpWebClient;
-import com.collector.mock.HttpWebClientMock;
+import com.collector.mocks.MockHttpWebClient;
 import com.collector.models.CompanyDao;
 import com.collector.parsers.CompanyParser;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,7 +23,7 @@ public class ParserTest {
     public static void setUp() {
         homeUrl = "https://companiesmarketcap.com/";
         companyParser = new CompanyParser();
-        httpWebClient = new HttpWebClientMock();
+        httpWebClient = new MockHttpWebClient();
         earningsUrl = "https://companiesmarketcap.com/nvidia/earnings/";
         revenueUrl = "https://companiesmarketcap.com/nvidia/revenue/";
     }
@@ -75,7 +75,7 @@ public class ParserTest {
 
     @Test
     public void testFindImageUrlReturnsImageUrlString(){
-        String resp = httpWebClient.get(revenueUrl);
+        String resp = httpWebClient.get(earningsUrl);
         String imageUrl = companyParser.findImageUrl(resp);
         assertEquals("/img/company-logos/256/NVDA.webp", imageUrl);
     }
@@ -83,7 +83,10 @@ public class ParserTest {
     @Test
     public void testFindDescriptionReturnsCorrectDescription(){
 
-        assertEquals(1,1);
+        String resp = httpWebClient.get(earningsUrl);
+        String output = companyParser.findDescription(resp);
+        String expected = "Nvidia Corporation is one of the largest developers of graphics processors and chipsets for personal computers and game consoles. The head office is in Santa Clara, California.";
+        assertEquals(expected,output);
     }
 
 }

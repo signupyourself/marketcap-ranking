@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class WebServiceIntegrationTest {
 
     @Test
-    public void Test(){
+    public void testWebServiceFetchesData(){
         WebService webService = new WebService(
                 new HttpWebClient(),
                 new CompanyParser(),

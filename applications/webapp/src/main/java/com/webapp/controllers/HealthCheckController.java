@@ -1,13 +1,24 @@
 package com.webapp.controllers;
 
+import com.metrics.MetricsHelper;
+import com.metrics.MetricsModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HealthCheckController {
 
-    @GetMapping("health/")
-    public String healthCheck(){
+    private final MetricsHelper metricsHelper;
+    HealthCheckController(){
+        metricsHelper = MetricsHelper.getMetricsHelper();
+    }
+    @GetMapping("health-check/")
+    public String HealthCheck(){
         return "Healthy";
+    }
+
+    @GetMapping("metrics")
+    public MetricsModel Metrics(){
+        return new MetricsModel(metricsHelper.getCount(), metricsHelper.getMean());
     }
 }

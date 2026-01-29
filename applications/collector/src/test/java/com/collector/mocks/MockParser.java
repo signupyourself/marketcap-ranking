@@ -1,4 +1,4 @@
-package com.collector.mock;
+package com.collector.mocks;
 
 import com.collector.parsers.CompanyParser;
 

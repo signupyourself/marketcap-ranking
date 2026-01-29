@@ -14,13 +14,12 @@ public class CompanyRepoIntegrationTest {
 
     private static DBConnection dbConnection;
     private static CompanyRepository companyRepository;
-    private static Company company;
 
     @BeforeEach
     public  void setUp(){
         dbConnection = new DBConnection ("jdbc:postgresql://localhost:5433/Test", "admin", "1854");
         companyRepository = new CompanyRepository(dbConnection);
-        company = new Company();
+        Company company = new Company();
         company.setName("NVIDIA");
         company.setCountry("USA");
         company.setImageUrl("http://imageUrl");

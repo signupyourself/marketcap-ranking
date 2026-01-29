@@ -2,6 +2,7 @@ package com.webapp.controllers;
 
 import com.db_support.repositories.CompanyRepository;
 import com.db_support.repositories.CountryRepository;
+import com.metrics.MetricsHelper;
 import com.utils.CurrencyFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,17 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @Controller
 class WebController {
 
-    private CompanyRepository companyRepository = new CompanyRepository();
-    private CountryRepository countryRepository = new CountryRepository();
-    private CurrencyFormatter formatter = new CurrencyFormatter();
+    private final CompanyRepository companyRepository;
+    private final CountryRepository countryRepository;
+    private final CurrencyFormatter formatter;
+    private final MetricsHelper metricsHelper;
 
+    WebController(){
+        companyRepository = new CompanyRepository();
+        countryRepository = new CountryRepository();
+        formatter = new CurrencyFormatter();
+        metricsHelper = MetricsHelper.getMetricsHelper();
+    }
 
     @GetMapping("/")
     public RedirectView Root(){
@@ -30,6 +38,7 @@ class WebController {
 
     @GetMapping("/companies")
     public String Home(Model model){
+        metricsHelper.mark();
         var companies = companyRepository.getCompanies();
         model.addAttribute("companies", companies);
         model.addAttribute("formatter", formatter);
@@ -38,6 +47,7 @@ class WebController {
 
     @GetMapping("/company/{id}")
     public String CompanyDetails(@PathVariable long id, Model model){
+        metricsHelper.mark();
         var company = companyRepository.getCompany(id);
         if(company != null){
             model.addAttribute("company", company);
@@ -50,6 +60,7 @@ class WebController {
 
     @GetMapping("/company/search/")
     public String CompanySearch(@RequestParam String searchTerm, Model model){
+        metricsHelper.mark();
         searchTerm=searchTerm.replaceAll("[^A-Za-z]", "");
         var companies = companyRepository.searchCompany(searchTerm);
         model.addAttribute("companies", companies);
@@ -59,6 +70,7 @@ class WebController {
 
     @GetMapping("/countries")
     public String Countries(Model model){
+        metricsHelper.mark();
         var countries = countryRepository.getCountries();
         model.addAttribute("countries", countries);
         model.addAttribute("formatter", formatter);
@@ -67,6 +79,7 @@ class WebController {
 
     @GetMapping("/country/search/")
     public String CountrySearch(@RequestParam String searchTerm, Model model){
+        metricsHelper.mark();
         searchTerm=searchTerm.replaceAll("[^A-Za-z]", "");
         var countries = countryRepository.searchCountry(searchTerm);
         model.addAttribute("countries", countries);
@@ -76,6 +89,7 @@ class WebController {
 
     @GetMapping("/country/{id}")
     public String CountryDetails(@PathVariable long id, Model model){
+        metricsHelper.mark();
         var country = countryRepository.getCountry(id);
         if(country != null){
             var companies = companyRepository.getCompaniesByCountry(country.getCountry());

@@ -14,11 +14,13 @@ public class HttpWebClient {
                     .newBuilder(new URI(uri))
                     .GET()
                     .build();
-            HttpResponse<String> response = HttpClient.newHttpClient().send(
+            HttpClient client = HttpClient.newHttpClient();
+            HttpResponse<String> response = client.send(
                     request,
                     HttpResponse.BodyHandlers.ofString()
             );
             responseBody = response.body();
+            client.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

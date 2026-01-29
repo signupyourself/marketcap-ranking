@@ -38,9 +38,8 @@ public class CompanyParser{
     }
 
     private String findMarketCap(String body){
-        String mktCapString =  body.split("data-sort=\"")[2]
+        return body.split("data-sort=\"")[2]
                 .split("\"")[0];
-        return mktCapString;
 
     }
 
@@ -61,7 +60,7 @@ public class CompanyParser{
         String number = intermediate.split(" ")[0];
         String base = intermediate.split(" ")[1].split(" ")[0];
         number = number.replace("$", "");
-        Double revenue = Double.parseDouble(number);
+        double revenue = Double.parseDouble(number);
         if(base.equals("Billion")){
             revenue = revenue * 1_000_000_000.0;
         }else if(base.equals("Million")){
@@ -75,7 +74,7 @@ public class CompanyParser{
         String number = intermediate.split(" ")[0];
         String base = intermediate.split(" ")[1].split(" ")[0];
         number = number.replace("$", "");
-        Double revenue = Double.parseDouble(number);
+        double revenue = Double.parseDouble(number);
         if(base.equals("Billion")){
             revenue = revenue * 1_000_000_000.0;
         }else if(base.equals("Million")){
@@ -97,10 +96,9 @@ public class CompanyParser{
     }
 
     public String findImageUrl(String html){
-        String intermediate = html.split("class=\"company-profile-logo\"")[1]
+        return html.split("class=\"company-profile-logo\"")[1]
                 .split("src=\"")[1]
                 .split("\"")[0];
-        return  intermediate;
     }
 
 }

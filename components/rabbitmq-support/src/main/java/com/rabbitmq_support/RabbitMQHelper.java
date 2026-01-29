@@ -44,7 +44,8 @@ public class RabbitMQHelper {
         channel.basicConsume(queue, true, deliverCallback, tag->{});
     }
 
-    public void closeConnection() throws IOException {
+    public void closeConnection() throws IOException, TimeoutException {
+        channel.close();
         connection.close();
     }
 

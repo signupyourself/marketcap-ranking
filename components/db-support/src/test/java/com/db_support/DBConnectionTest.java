@@ -10,6 +10,6 @@ public class DBConnectionTest {
     @Test
     public void testDBConnection(){
         DBConnection dbConnection = new DBConnection ("jdbc:postgresql://localhost:5433/Test", "admin", "1854");
-        assertNotEquals(dbConnection, null);
+        assertNotEquals(null, dbConnection);
     }
 }

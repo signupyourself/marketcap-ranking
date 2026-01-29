@@ -1,5 +1,5 @@
 [flyway]
-locations = ["filesystem:migrations"]
+locations = ["filesystem:database/migrations"]
 
 [environments.default]
 url = "jdbc:postgresql://localhost:5432/Data"
