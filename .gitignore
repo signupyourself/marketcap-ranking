@@ -1,7 +1,7 @@
 .gradle
 .idea
 production.yaml
-/home/azureuser/desktop/marketcap-ranking/database/production.toml
+database/production.toml
 build/
 applications/collector/build
 applications/webapp/build
