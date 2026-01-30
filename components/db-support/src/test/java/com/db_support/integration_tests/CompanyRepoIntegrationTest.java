@@ -17,7 +17,7 @@ public class CompanyRepoIntegrationTest {
 
     @BeforeEach
     public  void setUp(){
-        dbConnection = new DBConnection ("jdbc:postgresql://localhost:5433/Test", "admin", "1854");
+        dbConnection = new DBConnection ("jdbc:postgresql://localhost:5433/Test", "admin", "1234");
         companyRepository = new CompanyRepository(dbConnection);
         Company company = new Company();
         company.setName("NVIDIA");

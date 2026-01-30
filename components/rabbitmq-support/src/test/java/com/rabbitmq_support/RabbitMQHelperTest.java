@@ -14,7 +14,7 @@ public class RabbitMQHelperTest {
     @BeforeAll
     public static void setUp(){
         try {
-            rabbitMQHelper = new RabbitMQHelper("TEST_QUEUE");
+            rabbitMQHelper = new RabbitMQHelper("COLLECTOR_ANALYZER_TEST_QUEUE");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -26,7 +26,7 @@ public class RabbitMQHelperTest {
                 String message = new String(delivery.getBody(), "UTF-8");
                 assertEquals(TEST_MESSAGE, message);
             };
-            RabbitMQHelper rabbitMQHelper = new RabbitMQHelper("TEST_QUEUE");
+
 
         } catch (Exception e) {
             throw new RuntimeException(e);

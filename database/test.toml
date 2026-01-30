@@ -4,4 +4,4 @@ locations = ["filesystem:database/test_migrations"]
 [environments.default]
 url = "jdbc:postgresql://localhost:5433/Test"
 user = "admin"
-password = "1854"
+password = "1234"

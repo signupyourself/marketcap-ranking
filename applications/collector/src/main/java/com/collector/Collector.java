@@ -13,5 +13,6 @@ public class Collector{
                 new CompanyRepository(),
                 new CountryRepository(),
                 "COLLECTOR_ANALYZER_QUEUE");
+        collectorService.collect();
     }
 }

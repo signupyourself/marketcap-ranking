@@ -6,6 +6,7 @@ import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTe
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.servlet.client.RestTestClient;
+import org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,26 +21,42 @@ class WebAppTest {
     private RestTestClient restTestClient;
 
      @Test
-     void testHomePageReturnsNonNullBody() {
+     void testHomePageReturns200Ok() {
          assertThat(restTestClient.get()
                  .uri("http://localhost:%d/companies".formatted(port))
                  .exchange()
-                 .expectBody(String.class)).isNotNull();
+                 .expectStatus().isOk());
      };
 
      @Test
-     void testHealthCheckReturnsNonNullBody(){
-         assertThat(restTestClient.get()
-                 .uri("http://localhost:%d/health".formatted(port))
+     void testHealthCheckReturns200Ok(){
+         assertThat(restTestClient.get().uri("http://localhost:%d/health-check".formatted(port))
                  .exchange()
-                 .expectBody(String.class)).isNotNull();
+                 .expectStatus().isOk());
+
      }
 
      @Test
-     public void testCompanySearchPageReturnsNonNullBody(){
+     public void testCountryPageReturns200Ok(){
          assertThat(restTestClient.get()
-                 .uri("http://localhost:%d/company/4".formatted(port))
+                 .uri("http://localhost:%d/countries".formatted(port))
                  .exchange()
-                 .expectBody(String.class)).isNotNull();
+                 .expectStatus().isOk());
      }
+
+    @Test
+    public void testMetricsPageReturns200Ok(){
+        assertThat(restTestClient.get()
+                .uri("http://localhost:%d/".formatted(port))
+                .exchange()
+                .expectBody(String.class)).isNotNull();
+    }
+
+    @Test
+    public void testInvalidUriDoesNotReturn200Ok() {
+        assertThat(restTestClient.get()
+                .uri("http://localhost:%d/company/".formatted(port))
+                .exchange()
+                .expectStatus().isNotFound());
+    }
 }

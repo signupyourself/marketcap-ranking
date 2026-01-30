@@ -28,12 +28,12 @@ public class CollectorIntegrationTest {
             companyRepository = new CompanyRepository(
                     "jdbc:postgresql://localhost:5433/Test",
                     "admin",
-                    "1854"
+                    "1234"
             );
             countryRepository = new CountryRepository(
                     "jdbc:postgresql://localhost:5433/Test",
                     "admin",
-                    "1854"
+                    "1234"
             );
     }
 
@@ -58,7 +58,7 @@ public class CollectorIntegrationTest {
         collectorService.collect();
         DeliverCallback callback = (string, delivery)->{
             String output = new String(delivery.getBody(), StandardCharsets.UTF_8);
-            assertEquals("Done", output);
+            assertEquals("Not Done", output);
         };
         helper.listen(callback);
         helper.closeConnection();

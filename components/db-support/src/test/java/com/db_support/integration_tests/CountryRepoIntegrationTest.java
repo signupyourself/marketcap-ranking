@@ -13,13 +13,12 @@ public class CountryRepoIntegrationTest {
 
     private static DBConnection dbConnection;
     private static CountryRepository countryRepository;
-    private static Country country;
 
     @BeforeEach
     public  void setUp(){
-        dbConnection = new DBConnection("jdbc:postgresql://localhost:5433/Test", "admin", "1854");
+        dbConnection = new DBConnection("jdbc:postgresql://localhost:5433/Test", "admin", "1234");
         countryRepository = new CountryRepository(dbConnection);
-        country = new Country();
+        Country country = new Country();
         country.setCountry("USA");
         country.setMarketCap(1234.0);
         country.setRevenue(1235.0);

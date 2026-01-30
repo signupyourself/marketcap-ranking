@@ -1,7 +1,6 @@
 package com.webapp.controllers;
 
 import com.metrics.MetricsHelper;
-import com.metrics.MetricsModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,16 +8,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthCheckController {
 
     private final MetricsHelper metricsHelper;
+
     HealthCheckController(){
         metricsHelper = MetricsHelper.getMetricsHelper();
     }
-    @GetMapping("health-check/")
+
+    @GetMapping("health-check")
     public String HealthCheck(){
         return "Healthy";
     }
 
     @GetMapping("metrics")
-    public MetricsModel Metrics(){
-        return new MetricsModel(metricsHelper.getCount(), metricsHelper.getMean());
+    public long Metrics(){
+        //return new MetricsModel(metricsHelper.getCount(), metricsHelper.getMean());
+        return metricsHelper.getCount();
     }
 }

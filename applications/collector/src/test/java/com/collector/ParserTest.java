@@ -21,9 +21,9 @@ public class ParserTest {
 
     @BeforeAll
     public static void setUp() {
-        homeUrl = "https://companiesmarketcap.com/";
         companyParser = new CompanyParser();
         httpWebClient = new MockHttpWebClient();
+        homeUrl = "https://companiesmarketcap.com/";
         earningsUrl = "https://companiesmarketcap.com/nvidia/earnings/";
         revenueUrl = "https://companiesmarketcap.com/nvidia/revenue/";
     }

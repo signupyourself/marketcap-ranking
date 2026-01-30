@@ -9,7 +9,7 @@ public class DBConnectionTest {
 
     @Test
     public void testDBConnection(){
-        DBConnection dbConnection = new DBConnection ("jdbc:postgresql://localhost:5433/Test", "admin", "1854");
+        DBConnection dbConnection = new DBConnection ("jdbc:postgresql://localhost:5433/Test", "admin", "1234");
         assertNotEquals(null, dbConnection);
     }
 }

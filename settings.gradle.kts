@@ -13,9 +13,6 @@ include("components:metrics")
 pluginManagement {
     repositories {
         maven { url = uri("https://repo.spring.io/snapshot") }
-        maven {
-            url=uri("https://download.red-gate.com/maven/release")
-        }
         gradlePluginPortal()
     }
 }

@@ -37,6 +37,7 @@ public class CollectorService {
     }
 
     public void fetch(){
+
         companyRepository.deleteCompanies();
         countryRepository.deleteCountries();
 
@@ -46,11 +47,11 @@ public class CollectorService {
                 "https://companiesmarketcap.com/"
         );
 
-        System.out.println("Fetching data");
+        log.info("Started fetching data");
 
         var companies = webService.fetch();
 
-        System.out.println("Fetching done");
+        log.info("Fetching data done");
 
         for(var company: companies){
             companyRepository.insertCompany(company);

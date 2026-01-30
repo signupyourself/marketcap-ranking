@@ -3,5 +3,3 @@ locations = ["filesystem:database/migrations"]
 
 [environments.default]
 url = "jdbc:postgresql://localhost:5432/Data"
-user = "admin"
-password = "1854"

@@ -1,6 +1,5 @@
 .gradle
 .idea
-production.yaml
 database/production.toml
 build/
 applications/collector/build
@@ -9,3 +8,4 @@ applications/analyzer/build
 components/db-support/build
 components/rabbitmq-support/build
 components/utils/build
+components/metrics/build
