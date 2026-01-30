@@ -24,13 +24,13 @@ public class ApiController {
     }
     @GetMapping("/api/companies")
     public List<Company> Companies(){
-        metricsHelper.mark();
+        metricsHelper.markApiMeter();
         return companyRepository.getCompanies();
     }
 
     @GetMapping("/api/countries")
     public List<Country> Countries(){
-        metricsHelper.mark();
+        metricsHelper.markApiMeter();
         return countryRepository.getCountries();
     }
 }

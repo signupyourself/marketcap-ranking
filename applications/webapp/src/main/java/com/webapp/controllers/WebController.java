@@ -38,7 +38,7 @@ class WebController {
 
     @GetMapping("/companies")
     public String Home(Model model){
-        metricsHelper.mark();
+        metricsHelper.markWebMeter();
         var companies = companyRepository.getCompanies();
         model.addAttribute("companies", companies);
         model.addAttribute("formatter", formatter);
@@ -47,7 +47,7 @@ class WebController {
 
     @GetMapping("/company/{id}")
     public String CompanyDetails(@PathVariable long id, Model model){
-        metricsHelper.mark();
+        metricsHelper.markWebMeter();
         var company = companyRepository.getCompany(id);
         if(company != null){
             model.addAttribute("company", company);
@@ -60,7 +60,7 @@ class WebController {
 
     @GetMapping("/company/search/")
     public String CompanySearch(@RequestParam String searchTerm, Model model){
-        metricsHelper.mark();
+        metricsHelper.markWebMeter();
         searchTerm=searchTerm.replaceAll("[^A-Za-z]", "");
         var companies = companyRepository.searchCompany(searchTerm);
         model.addAttribute("companies", companies);
@@ -70,7 +70,7 @@ class WebController {
 
     @GetMapping("/countries")
     public String Countries(Model model){
-        metricsHelper.mark();
+        metricsHelper.markWebMeter();
         var countries = countryRepository.getCountries();
         model.addAttribute("countries", countries);
         model.addAttribute("formatter", formatter);
@@ -79,7 +79,7 @@ class WebController {
 
     @GetMapping("/country/search/")
     public String CountrySearch(@RequestParam String searchTerm, Model model){
-        metricsHelper.mark();
+        metricsHelper.markWebMeter();
         searchTerm=searchTerm.replaceAll("[^A-Za-z]", "");
         var countries = countryRepository.searchCountry(searchTerm);
         model.addAttribute("countries", countries);
@@ -89,7 +89,7 @@ class WebController {
 
     @GetMapping("/country/{id}")
     public String CountryDetails(@PathVariable long id, Model model){
-        metricsHelper.mark();
+        metricsHelper.markWebMeter();
         var country = countryRepository.getCountry(id);
         if(country != null){
             var companies = companyRepository.getCompaniesByCountry(country.getCountry());

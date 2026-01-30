@@ -19,8 +19,7 @@ public class HealthCheckController {
     }
 
     @GetMapping("metrics")
-    public long Metrics(){
-        //return new MetricsModel(metricsHelper.getCount(), metricsHelper.getMean());
-        return metricsHelper.getCount();
+    public String Metrics(){
+        return metricsHelper.getMetrics();
     }
 }

@@ -6,7 +6,6 @@ import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTe
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.servlet.client.RestTestClient;
-import org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

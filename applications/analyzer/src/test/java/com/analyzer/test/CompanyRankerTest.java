@@ -3,7 +3,6 @@ package com.analyzer.test;
 import com.analyzer.ranker.CompanyRanker;
 import com.db_support.models.Company;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CompanyRankerTest {
 
-    private static List<Company> companies = new ArrayList<>();
+    private static final List<Company> companies = new ArrayList<>();
 
     @BeforeAll
     public static void setup(){

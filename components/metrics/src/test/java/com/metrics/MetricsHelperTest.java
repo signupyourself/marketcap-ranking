@@ -7,10 +7,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MetricsHelperTest {
 
     @Test
-    public void testGetCountReturnsOneWhenCountIsOne(){
+    public void testGetMetricsReturnsThreeWhenWebCounterIsThree(){
         MetricsHelper metricsHelper = MetricsHelper.getMetricsHelper();
-        metricsHelper.mark();
-        assertEquals(1, metricsHelper.getCount());
+        metricsHelper.markWebMeter();
+        metricsHelper.markWebMeter();
+        metricsHelper.markWebMeter();
+        assert(metricsHelper.getMetrics().contains("web_meter_total 3.0"));
+    }
+
+    @Test
+    public void testGetMetricsReturnsThreeWhenApiCounterIsThree(){
+        MetricsHelper metricsHelper = MetricsHelper.getMetricsHelper();
+        metricsHelper.markApiMeter();
+        metricsHelper.markApiMeter();
+        metricsHelper.markApiMeter();
+        assert(metricsHelper.getMetrics().contains("api_meter_total 3.0"));
     }
 
 

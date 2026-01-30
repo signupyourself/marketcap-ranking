@@ -77,6 +77,7 @@ public class CompanyRepository{
             while (result.next()) {
                 companies.add(parseResultSet(result));
             }
+            result.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -91,6 +92,7 @@ public class CompanyRepository{
             while (resultSet.next()){
                 companies.add(parseResultSet(resultSet));
             }
+            resultSet.close();
         }catch (SQLException e){
             System.out.println(e);
             System.exit(-1);
@@ -102,10 +104,11 @@ public class CompanyRepository{
         String stmt = String.format("SELECT * FROM Companies WHERE id=%d", id);
         Company company=null;
         try{
-            ResultSet result = dbConnection.query(stmt);
-            while (result.next()){
-                company = parseResultSet(result);
+            ResultSet resultSet = dbConnection.query(stmt);
+            while (resultSet.next()){
+                company = parseResultSet(resultSet);
             }
+            resultSet.close();
         }catch (Exception e){
             throw new RuntimeException();
         }
@@ -116,9 +119,9 @@ public class CompanyRepository{
         String stmt = "SELECT * FROM Companies WHERE NAME ILIKE '%"+StringEscaper.escapeQuotes(searchTerm)+"%';";
         List<Company> companies = new ArrayList<>();
         try{
-            ResultSet result =  dbConnection.query(stmt);
-            while (result.next()){
-                companies.add(parseResultSet(result));
+            ResultSet resultSet =  dbConnection.query(stmt);
+            while (resultSet.next()){
+                companies.add(parseResultSet(resultSet));
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

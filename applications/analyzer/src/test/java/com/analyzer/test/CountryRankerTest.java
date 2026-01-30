@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CountryRankerTest {
 
-    private static List<Company> companies = new ArrayList<>();
+    private static final List<Company> companies = new ArrayList<>();
 
     @BeforeAll
     public static void setUp(){
