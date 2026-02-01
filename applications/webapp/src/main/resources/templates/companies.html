@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/template.html :: head('companies')}"/>
+<body>
+
+    <!-- Navbar -->
+    <nav th:replace="~{fragments/template.html :: navbar('/company/search/', 'Company')}"/>
+
+    <!-- content -->
+    <div class="container mt-3">
+        <h1 th:text="${heading} ?: 'Companies By Market Cap' "></h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Company</th>
+                <th>Country</th>
+                <th>Market Cap</th>
+                <th>Earnings</th>
+                <th>Revenue</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="company:${companies}">
+                    <td th:text="${company.getMarketCapRanking()}"></td>
+                    <td>
+                        <img height="70 rem;" th:src="${company.getImageUrl()}" class="mr-20">
+                        <a th:href="@{'/company/'+${company.getId()}}" th:text="${company.getName()}"></a>
+                    </td>
+                    <td th:text="${company.getCountry()}"></td>
+                    <td th:text="${formatter.format(company.getMarketCap())}"></td>
+                    <td th:text="${formatter.format(company.getEarning())}"></td>
+                    <td th:text="${formatter.format(company.getRevenue())}"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
