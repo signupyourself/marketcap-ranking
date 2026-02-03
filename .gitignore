@@ -1,0 +1,11 @@
+.gradle
+.idea
+build/
+applications/collector/build
+applications/webapp/build
+applications/analyzer/build
+components/db-support/build
+components/rabbitmq-support/build
+components/utils/build
+components/metrics/build
+components/.DS_STORE

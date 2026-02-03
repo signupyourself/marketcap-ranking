@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/template.html :: head(${company.getName()})}"/>
+<body>
+
+    <nav th:insert="~{fragments/template :: navbar('/company/search/', 'Company')}"/>
+
+    <div class="card mx-2 mt-4">
+        <div class="card-body">
+            <div>
+                <img height="150rem;" th:src="${company.getImageUrl()}" th:alt="${company.getName()}"/>
+                <h3 th:text="${company.getName()}"></h3>
+                <p th:text="${company.getDescription()}"></p>
+            </div>
+        </div>
+        <div class="mx-2">
+            <table class="table table-striped">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        Country
+                    </th>
+                    <th>
+                        Market Cap
+                    </th>
+                    <th>
+                        Revenue
+                    </th>
+                    <th>
+                        Earnings
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${company.getCountry()}"></td>
+                    <td th:text="${formatter.format(company.getMarketCap())}"></td>
+                    <td th:text="${formatter.format(company.getRevenue())}"></td>
+                    <td th:text="${formatter.format(company.getEarning())}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
