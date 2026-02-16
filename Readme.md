@@ -30,7 +30,7 @@ An application that demonstrates microservices architecture pattern for big data
 
 1. Applying test database migrations
 
-       flyway -user=admin -password=1234 -url="jdbc:postgresql://localhost:5433/Test" -locations= "filesystem:database/migrations" -cleanDisabled=false clean migrate
+       flyway -user=admin -password=1234 -url="jdbc:postgresql://localhost:5433/Test" -locations="filesystem:database/migrations" -cleanDisabled=false clean migrate
 
 1. Applying production database migrations
 
